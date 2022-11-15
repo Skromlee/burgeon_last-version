@@ -7,6 +7,7 @@ import {
     updateUserDetails,
 } from "../../features/auth/authSlice";
 import EditDialog from "../../components/user/EditDialog";
+import Spinner from "../../components/common/Spinner";
 
 const User = () => {
     const navigate = useNavigate();
@@ -15,13 +16,26 @@ const User = () => {
     const { user, isLoading, isError, message } = useSelector(
         (state) => state.auth
     );
-    const { _id, email, citizen, token, firstname } = user;
+    const {
+        _id,
+        email,
+        firstname,
+        lastname,
+        phone,
+        citizen,
+        addressNo,
+        province,
+        district,
+        subdistrict,
+        postcode,
+        dob,
+    } = user;
 
     const [visibility, setVisibility] = useState(false);
+
     const [formDetails, setFormDetails] = useState({
         _id,
         email: email,
-        password: "",
         firstname: "",
         lastname: "",
         phone: "",
@@ -72,6 +86,10 @@ const User = () => {
         });
     };
 
+    if (isLoading) {
+        return <Spinner></Spinner>;
+    }
+
     return (
         <>
             {visibility && (
@@ -88,7 +106,7 @@ const User = () => {
             <div>
                 <h1>Account Protected Page</h1>
                 <button onClick={onLogout}>Log Out</button>
-                <button onClick={isEditing}>Log Out</button>
+                <button onClick={() => setVisibility(true)}>Log Out</button>
             </div>
         </>
     );

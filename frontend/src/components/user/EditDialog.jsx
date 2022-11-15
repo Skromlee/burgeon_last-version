@@ -13,7 +13,7 @@ const EditDialog = ({
                     <div className=" flex justify-between transition">
                         <div className=" flex items-center space-x-6 align-middle transition">
                             <h1 className=" text-2xl md:text-3xl transition">
-                                Employee in details
+                                Update your information
                             </h1>
                             {!isEditing && (
                                 <button
@@ -152,27 +152,6 @@ const EditDialog = ({
                                         disabled={isEditing ? false : true}
                                         onChange={onChange}
                                     />
-                                </div>
-
-                                {/* Role */}
-                                <div className="space-x-2 flex">
-                                    <label htmlFor="role" className="basis-1/4">
-                                        Role
-                                    </label>
-                                    <select
-                                        name="role"
-                                        id="role"
-                                        value={emp.role}
-                                        className="border-[1px] border-black rounded-md focus:outline-none px-2 basis-2/3 transition"
-                                        disabled={isEditing ? false : true}
-                                        onChange={onChange}
-                                    >
-                                        <option value="Import">Import</option>
-                                        <option value="Export">Export</option>
-                                        <option value="Import Screen">
-                                            Import Screen
-                                        </option>
-                                    </select>
                                 </div>
                             </div>
 
